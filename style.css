@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    background-color:  #211c47;
+}
+
+.container {
+    background-color: #6a5de0;
+    width: 300px;
+    margin: 70px auto;
+    padding: 25px;
+}
+
+select,button {
+    padding: 7px;
+    margin: 2px;
+    width: 100%;
+}
+
+button {
+    background-color: #223172;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border: 2px solid #08090a;
+}
+
+#weather-icon {
+    width: 65px;
+}
+
+p {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    color: #0a0909;
+}
+
+
