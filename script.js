@@ -3,7 +3,7 @@ const cidade = document.getElementById("cidade");
 
 
 //busca informação do clima
-button.addEventListener("click", async function(){
+button.addEventListener("click", async function () {
 
     const cidadeEscolhida = cidade.value;
 
@@ -17,19 +17,19 @@ button.addEventListener("click", async function(){
 //responsável por buscar os dados da API de clima
 async function getWeather(cidade) {
 
-try{
-const url = `https://weather-proxy.freecodecamp.rocks/api/city/${cidade}`
+    try {
+        const url = `https://weather-proxy.freecodecamp.rocks/api/city/${cidade}`
 
-// faz a requisição para a API
-const response = await fetch(url);
+        // faz a requisição para a API
+        const response = await fetch(url);
 
-// Converte a resposta da API para JSON
-const data = await response.json();
-return data;
+        // Converte a resposta da API para JSON
+        const data = await response.json();
+        return data;
 
-} catch (error){
-    console.log(error);
-}
+    } catch (error) {
+        console.log(error);
+    }
 
 }
 
@@ -49,23 +49,28 @@ async function showWeather(cidade) {
     const mainTemperature = document.getElementById("main-temperature");
 
     // Mostra a temperatura retornada pela API
-    mainTemperature.textContent = `${dados.main.temp} °C `;
+    mainTemperature.textContent = `${dados.main.temp.toFixed(1)} °C `;
 
     // Exibe a sensação térmica
     const feelsLike = document.getElementById("feels-like");
-     feelsLike.textContent = `${dados.main.feels_like}°C`;
+    feelsLike.textContent = `${dados.main.feels_like}°C`;
 
-     //Exibe a umidade do ar
-     const humidity = document.getElementById("humidity");
-     humidity.textContent = `${dados.main.humidity}%`;
+    //Exibe a umidade do ar
+    const humidity = document.getElementById("humidity");
+    humidity.textContent = `${dados.main.humidity}%`;
 
-     //Exibe a velocidade do vento
-     const wind = document.getElementById("wind");
-     wind.textContent = `${dados.wind.speed} m/s`;
-    
-     //Exibe a rajada de vento
-     const windGust = document.getElementById("wind-gust");
-    windGust.textContent = `${dados.wind.gust} m/s`;
+    //Exibe a velocidade do vento
+    const wind = document.getElementById("wind");
+    wind.textContent = `${dados.wind.speed} m/s`;
+
+    // Exibe a rajada de vento
+    const windGust = document.getElementById("wind-gust");
+
+    if (dados.wind.gust === undefined) {
+        windGust.textContent = "N/A";
+    } else {
+        windGust.textContent = `${dados.wind.gust} m/s`;
+    }
 
     //Exibe o tipo do clima
     const weatherMain = document.getElementById("weather-main");
